@@ -1,5 +1,7 @@
 from cogent3.app.composable import define_app
 
-@define_app
-def to_upper(input: str) -> str:
-    return input.upper()
+@define_app()
+class to_upper:
+
+    def main(self, data: str) -> str:
+        return data.upper()
