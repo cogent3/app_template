@@ -20,7 +20,7 @@ venv\Scripts\Activate.ps1
     cd cogent3
     git checkout plugin-support
     pip install flit
-    flit install -s .
+    flit install
     cd ..
 ```
 
