@@ -34,6 +34,20 @@ venv\Scripts\Activate.ps1
 
 - test the sample uppercase app in the notebook
 
+- note that the setup.py for this project includes the following
+
+```python
+setup(
+    name="uppercase",
+    entry_points={
+        'cogent3.app': [
+            'to_upper = uppercase:to_upper',
+        ],
+    },
+)
+```
+Which define what apps your project will export to cogent3.
+
 - make changes to setup.py to add/remove entry points and install_requires as needed
 
 - rinse/repeat
