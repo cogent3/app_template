@@ -4,8 +4,13 @@ A template for creating cogent3 apps
 - create a virtual environment and activate it
 
 ```bash
-python3 -m venv venv
+python -m venv venv
 source venv/bin/activate
+```
+
+```powershell
+python -m venv venv
+venv\Scripts\Activate.ps1
 ```
 
 - clone cogent3 into a subdirectory of your clone of this repo and switch to the plugin-support branch and install it using flit -s
