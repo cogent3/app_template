@@ -1,0 +1,48 @@
+[build-system]
+requires = ["flit_core >= 3.4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "upper"
+description = "a demonstration of a project defining a cogent3 app"
+version = "0.01"
+authors = [
+    { name = "Your Name", email = "YourEmail@your.domain"},
+]
+readme = "README.md"
+license = { file = "LICENSE" }
+# if you need graphing, use "cogent3[extra]" as the dependency otherwise
+# just "cogent3"
+dependencies = ["cogent3[extra]"]
+requires-python = ">=3.9,<3.13"
+classifiers = [
+        "Development Status :: 2 - Pre-Alpha",
+        "Intended Audience :: Science/Research",
+        "License :: OSI Approved :: BSD License",
+        "Topic :: Scientific/Engineering :: Bio-Informatics",
+        "Topic :: Software Development :: Libraries :: Python Modules",
+        "Operating System :: OS Independent",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        # which of the following should we choose??
+        "FRAMEWORK :: Cogent3",
+        "Environment :: Plugins :: Cogent3",
+    ]
+
+[project.optional-dependencies]
+test = [
+    "black",
+    "isort",
+    "pytest",
+    "pytest-cov",
+    "nox"
+    ]
+doc = [
+    "jupyter",
+    "ipykernel",
+    "nbformat",
+    "ipywidgets"
+    ]
+[project.entry-points."cogent3.app"]
+to_upper = "upper.uppercase:to_upper"
