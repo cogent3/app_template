@@ -22,7 +22,7 @@ class {{ app_class_name }}:
 
 #TODO: Remove alternate function based app implementation
 # @define_app()
-# def {{ app_class_name }}(data: str)-->str:
+# def {{ app_class_name }}(data: str)->str:
 #     """Documentation for {{ app_class_name }} function."""
 #     return data
 {% endraw %}
