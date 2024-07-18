@@ -32,7 +32,13 @@ python -m venv .venv
 
 ### test the app
 
-to run the test suite use the following command to validate the app (for python 3.12)
+To install the test Nox suite use the following command
+
+```bash
+    pip install nox
+```
+
+To run the test suite use the following command to validate the app (for python 3.12)
 
 ```bash
     nox -s test-3.12 

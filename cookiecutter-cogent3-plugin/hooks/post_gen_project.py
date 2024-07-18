@@ -19,6 +19,7 @@ import pytest
 from cogent3 import get_app
 from {{ project_slug }} import {{ app_class_name }}
 
+@pytest.mark.xfail(reason="Expected to fail because it is using cookiecutter values")
 def test_{{ app_slug }}_installed():
     app = get_app("{{ app_class_name }}")
     got = app("test")
