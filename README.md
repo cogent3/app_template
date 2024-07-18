@@ -19,7 +19,7 @@ pip install jinja2
 - create a new directory for your library
 - run cookie cutter with the url of this repository
 ```bash
-cookiecutter https://github.com/yourusername/cookiecutter-cogent3-plugin
+cookiecutter https://github.com/cogent3/app_template
 
 ```
 
