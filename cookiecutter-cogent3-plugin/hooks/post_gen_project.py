@@ -2,16 +2,31 @@ import os
 from jinja2 import Template
 
 # Load the template content
-app_template_content = """
+app_template_content = '''
 {% raw %}
 from cogent3.app.composable import define_app
 
 @define_app()
 class {{ app_class_name }}:
+    """Documentation for {{ app_class_name }} class."""
+    def __init__(self, param = None):
+        """
+            Parameters
+            ----------
+            param
+                description of initialization parameter.
+        """
+        pass
     def main(self, data: str) -> str:
         return data
+
+#TODO: Remove alternate function based app implementation
+# @define_app()
+# def {{ app_class_name }}(data: str)-->str:
+#     """Documentation for {{ app_class_name }} function."""
+#     return data
 {% endraw %}
-"""
+'''
 
 test_template_content = """
 {% raw %}
