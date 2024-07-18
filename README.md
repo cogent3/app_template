@@ -1,67 +1,34 @@
-# app_template
-A template for creating cogent3 apps
+# A Cookiecutter template for creating cogent3 plug-in apps
 
-## create a virtual environment and activate it
+Cookiecutter is a command-line utility that creates projects from cookiecutters (project templates). This is a cookiecutter template for creating a library that exports and registers cogent3 plugin apps.
 
-### Linux or MacOS
+## Requirements
+
+- python 
+- `cookiecutter` installed from the command line using: 
 ```bash
-python -m venv .venv
-source .venv/bin/activate
+pip install cookiecutter
 ```
-
-### Windows
-```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-```
-## install the app library
-
-- install the library in the src folder using -e to install it in editable mode
-
+- `jinja2 ` installed from the command line using: 
 ```bash
-    pip install -e .
+pip install jinja2
 ```
 
-## test the app
+## Running the cookiecutter to create cogent3 plug-in apps
 
-to run the test suite use the following command to validate the app (for python 3.12)
-
+- create a new directory for your library
+- run cookie cutter with the url of this repository
 ```bash
-    nox -s test-3.12 
+cookiecutter https://github.com/yourusername/cookiecutter-cogent3-plugin
+
 ```
 
-## See the app working
+You will be asked to fill out 5 fields:
+- library_name: This is the name of your library that will export the apps
+- apps : This is a comma separated list of the apps you want to create in the library
+- author: Your name
+- email: Your email
+- project_slug: The name of the project.  This will be the name of the root directory and likely your repository
 
-- load trial_plugins.ipynb from the docs folder into VS Code, and set it to use your venv as the notebooks python interpreter
-
-- test the sample uppercase app in the notebook
-
-- note that the pyproject.toml file for this project includes the following
-
-```python
-[project.entry-points."cogent3.app"]
-to_upper = "upper.uppercase:to_upper"
-```
-where upper is the library name, uppercase is the file name and to_upper is the class name.
-
-This will expose your app to the plug-in architecture of cogent3.
-
-## To add a new app
-
-- add a new python file to the src\upper folder that imports define_app from cogent3
-- add a class with a main method that takes the input data and returns the output data
-- decorate the class with @define_app()
-- add a docstring to the class that will bw shown in the apps documentation
-eg: 
-```python 
-from cogent3.app.composable import define_app
-
-
-@define_app()
-class to_lower:
-    def main(self, data: str) -> str:
-        return data.lower()
-```
-- Add an entry-point to pyproject.toml that poionts to the library file and class 
-
-
+In your current directory will be created a directory named with your project_slug, inside of which will be a project with documentation for how to 
+test the apps and how to add new apps to the library.
