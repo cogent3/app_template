@@ -1,55 +1,67 @@
 # app_template
 A template for creating cogent3 apps
 
-- create a virtual environment and activate it
+## create a virtual environment and activate it
 
+### Linux or MacOS
 ```bash
-python -m venv venv
-source venv/bin/activate
+python -m venv .venv
+source .venv/bin/activate
 ```
 
+### Windows
 ```powershell
-python -m venv venv
-venv\Scripts\Activate.ps1
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
 ```
+## install the app library
 
-- clone cogent3 into a subdirectory of your clone of this repo and switch to the plugin-support branch and install it using flit -s
-
-```bash
-    git clone git@github.com:cogent3/cogent3.git
-    cd cogent3
-    git checkout plugin-support
-    pip install flit
-    flit install
-    cd ..
-```
-
-- install the app_template package using -e to install it in editable mode
+- install the library in the src folder using -e to install it in editable mode
 
 ```bash
     pip install -e .
 ```
 
-- load trial_plugins.ipynb in VS Code, and set it to use your venv as the python interpreter
+## test the app
+
+to run the test suite use the following command to validate the app (for python 3.12)
+
+```bash
+    nox -s test-3.12 
+```
+
+## See the app working
+
+- load trial_plugins.ipynb from the docs folder into VS Code, and set it to use your venv as the notebooks python interpreter
 
 - test the sample uppercase app in the notebook
 
-- note that the setup.py for this project includes the following
+- note that the pyproject.toml file for this project includes the following
 
 ```python
-setup(
-    name="uppercase",
-    entry_points={
-        'cogent3.app': [
-            'to_upper = uppercase:to_upper',
-        ],
-    },
-)
+[project.entry-points."cogent3.app"]
+to_upper = "upper.uppercase:to_upper"
 ```
-Which define what apps your project will export to cogent3.
+where upper is the library name, uppercase is the file name and to_upper is the class name.
 
-- make changes to setup.py to add/remove entry points and install_requires as needed
+This will expose your app to the plug-in architecture of cogent3.
 
-- rinse/repeat
+## To add a new app
+
+- add a new python file to the src\upper folder that imports define_app from cogent3
+- add a class with a main method that takes the input data and returns the output data
+- decorate the class with @define_app()
+- add a docstring to the class that will bw shown in the apps documentation
+eg: 
+```python 
+from cogent3.app.composable import define_app
+
+
+@define_app()
+class to_lower:
+    def main(self, data: str) -> str:
+        return data.lower()
+```
+- Add an entry-point to pyproject.toml that poionts to the library file and class 
 
 
