@@ -3,11 +3,11 @@ requires = ["flit_core >= 3.4"]
 build-backend = "flit_core.buildapi"
 
 [project]
-name = "upper"
+name = "{{ cookiecutter.library_name.strip().lower().replace(' ', '_') }}"
 description = "a demonstration of a project defining a cogent3 app"
 version = "0.01"
 authors = [
-    { name = "Your Name", email = "YourEmail@your.domain"},
+    { name = "{{  cookiecutter.author}}", email = "{{ cookiecutter.email }}"},
 ]
 readme = "README.md"
 license = { file = "LICENSE" }
@@ -44,5 +44,6 @@ doc = [
     "nbformat",
     "ipywidgets"
     ]
-[project.entry-points."cogent3.app"]
-to_upper = "upper.uppercase:to_upper"
+[project.entry-points."cogent3.app"]{% set apps_list = cookiecutter.apps.split(',') %}
+{% for app_name in apps_list %} {{ app_name.strip().title().replace(' ', '') }} = "{{ cookiecutter.library_name.strip().lower().replace(' ', '_') }}.{{ app_name.strip().lower().replace(' ', '_') }}:{{ app_name.strip().title().replace(' ', '') }}"
+{% endfor %}
