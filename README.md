@@ -20,15 +20,12 @@ pip install jinja2
 - run cookie cutter with the url of this repository
 ```bash
 cookiecutter https://github.com/cogent3/app_template
-
 ```
 
 You will be asked to fill out 5 fields:
-- library_name: This is the name of your library that will export the apps
+- library_name: The name of the project. This will be the name of the root directory and likely your repository
 - apps : This is a comma separated list of the apps you want to create in the library
 - author: Your name
 - email: Your email
-- project_slug: The name of the project.  This will be the name of the root directory and likely your repository
 
-In your current directory will be created a directory named with your project_slug, inside of which will be a project with documentation for how to 
-test the apps and how to add new apps to the library.
+In your current directory will be created a directory named with your library_name, inside of which will be a project with documentation for how to test the apps and how to add new apps to the library.

@@ -44,6 +44,11 @@ doc = [
     "nbformat",
     "ipywidgets"
     ]
-[project.entry-points."cogent3.app"]{% set apps_list = cookiecutter.apps.split(',') %}
-{% for app_name in apps_list %} {{ app_name.strip().title().replace(' ', '') }} = "{{ cookiecutter.library_name.strip().lower().replace(' ', '_') }}.{{ app_name.strip().lower().replace(' ', '_') }}:{{ app_name.strip().title().replace(' ', '') }}"
-{% endfor %}
+[project.entry-points."cogent3.app"]
+{%- set apps_list = cookiecutter.apps.split(',') %}
+{%- set lib_name = cookiecutter.library_name.strip().lower().replace(' ', '_') %}
+{%- for app in apps_list %}
+{%- set app_name = app.strip().lower().replace(' ', '_') %}
+{{ app_name }}_class = "{{ lib_name }}.app:{{ app_name }}_class"
+{{ app_name }}_func = "{{ lib_name }}.app:{{ app_name }}_func"
+{%- endfor %}

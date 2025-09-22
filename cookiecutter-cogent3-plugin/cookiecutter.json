@@ -1,7 +1,6 @@
 {
-    "library_name": "case conversion",
+    "library_name": "some_name",
     "apps": "to upper, to lower",
     "author": "Your Name",
-    "email": "you@email.address",
-    "project_slug": "{{ cookiecutter.library_name.lower().replace(' ', '_') }}"
+    "email": "you@email.address"
 }
